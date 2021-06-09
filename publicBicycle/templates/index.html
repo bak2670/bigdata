@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>따릉이 일일 사용량 예측 프로그램</title>
+    <style>
+        * {
+            box-sizing : border-box;
+        }
+
+        h2, h3 {
+            text-align : center;
+        }
+
+        .form_box {
+            width : 800px;
+            height : 320px;
+            display : block;
+            margin : 0 auto;
+            font-size : 24px;
+            font-weight : bold;
+        }
+
+        .form_box .parameters div {
+            width : 500px;
+            margin : 0 auto;
+        }
+
+        .form_box .parameters div p .tag {
+            height : 40px;
+            width : 200px;
+            display : inline-block;
+            text-align : center;
+        }
+
+        .form_box .parameters div p input {
+            height : 30px;
+            width : 180px;
+            font-size : 12px;
+        }
+
+        .form_box .parameters div p select {
+            height : 30px;
+            width : 172px;
+            font-size : 12px;
+        }
+
+        .form_box .parameters p button {
+            width : 60px;
+            height : 40px;
+            font-size : 21px;
+            color : white;
+            display : block;
+            margin : 0 auto;
+            background-color : navy;
+            border : 1px solid black;
+            border-radius : none;
+        }
+
+        .result_box {
+            margin : 0 auto;
+            border : 3px dot gold;
+            width : 600px;
+        }
+
+        .result_box #result {
+            text-align : center;
+            font-size : 40px;
+            font-weight : bold;
+            color : navy;
+        }
+    </style>
+</head>
+<body>
+    <a href="fineDust.html"></a>
+    <h2>따릉이 일일 사용량 예측 프로그램</h2>
+    <h3>하단의 항목들을 입력하세요</h3>
+    <div class="form_box">
+        <form method="post" action="/" class="parameters">
+            <div><p><span class="tag">기온</span><input type="text" name="temperature", placeholder="기온을 입력하세요">(°C)</p></div>
+            <div><p><span class="tag">강수량</span><input type="text" name="rainfall", placeholder="강수량을 입력하세요">(mm)</p></div>
+            <div><p><span class="tag">미세먼지(PM10)</span><input type="text" name="dust", placeholder="미세먼지 농도를 입력하세요">(㎍/㎥)</p></div>
+            <div>
+                <p><span class="tag">요일</span>
+                    <select name="day">
+                        <option value="0", name="sunday">평일</option>
+                        <option value="1", name="monday">주말</option>
+                    </select>
+                </p>
+            </div>
+            <p><button type="submit">예측</button></p>
+        </form>
+    </div>
+    
+    <div class="result_box">
+        {% if counts %}
+            <p id="result">예상 사용량은 {{counts}} 입니다.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
